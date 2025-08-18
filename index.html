@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notezly - Android Note-Taking App</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; line-height: 1.6; background: #fafafa; color: #333; }
+        h1, h2, h3 { color: #2c3e50; }
+        code, pre { background: #eee; padding: 4px 6px; border-radius: 4px; }
+        .section { margin-bottom: 40px; }
+        ul { margin-left: 20px; }
+    </style>
+</head>
+<body>
+    <h1>📒 Notezly – Android Note-Taking and Cloud Backup Application</h1>
+    <p>Notezly is a modern <strong>note-taking application for Android devices</strong>.<br>
+    It allows users to securely store and organize their notes, and back them up to the cloud using <strong>Google Drive integration</strong>.</p>
+
+    <div class="section">
+        <h2>🚀 Features</h2>
+        <ul>
+            <li>✍️ Create notes with drawings, text, and pages</li>
+            <li>🗂️ Workspace cards and page management</li>
+            <li>🎨 Free drawing, shapes, color & pen customization</li>
+            <li>📥 Import and edit PDFs</li>
+            <li>📤 Backup to Cloud (Google Drive)</li>
+            <ul>
+                <li>Automatically create <code>Notezly</code> folder if missing</li>
+                <li>Upload Room database files as a ZIP</li>
+                <li>Versioning & hash check with <code>meta/index.json</code></li>
+            </ul>
+            <li>📥 Restore from Cloud</li>
+            <ul>
+                <li>Download the latest backup ZIP</li>
+                <li>Extract Room DB files safely to local storage</li>
+                <li>Keep previous files with <code>.before_restore</code> suffix</li>
+            </ul>
+            <li>🔄 Conflict Resolution (local vs cloud)</li>
+            <li>👤 Google Account Management (sign in & switch account)</li>
+            <li>📊 Progress bar and notifications</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>📂 Google Drive Folder Structure</h2>
+        <pre>
+Notezly/
+ ├── db/
+ │   ├── latest.zip
+ │   ├── backup_YYYY-MM-DD_HH-mm-ss.zip
+ ├── meta/
+ │   └── index.json
+        </pre>
+    </div>
+
+    <div class="section">
+        <h2>🔐 Security & Backup Policy</h2>
+        <ul>
+            <li>At least 500 MB of free space is required in Drive</li>
+            <li>Large files are uploaded using resumable upload</li>
+            <li>Old backups are automatically cleaned</li>
+            <li>Only last 5 backups are kept</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>📱 User Scenarios</h2>
+        <h3>1. Backup to Cloud</h3>
+        <p>User signs in, notes are zipped and uploaded.<br>
+        On success: “Backup completed. Last backup: [date]”</p>
+
+        <h3>2. Restore from Cloud</h3>
+        <p>App downloads latest.zip, extracts DB files.<br>
+        On success: “Restore completed. Cloud backup from [date]”</p>
+
+        <h3>3. Switch Account</h3>
+        <p>User logs out and signs in with another account.</p>
+    </div>
+
+    <div class="section">
+        <h2>🛠️ Technical Details</h2>
+        <ul>
+            <li>Language: Java (Android)</li>
+            <li>Database: Room</li>
+            <li>Cloud: Google Drive API (drive.file scope)</li>
+            <li>Auth: Google Sign-In + OAuth 2.0</li>
+            <li>File Management: ZIP archives, JSON metadata</li>
+            <li>UI/UX: Cloud popup with icons (upload, download, account)</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>✅ Acceptance Criteria</h2>
+        <ul>
+            <li>Create Notezly folder automatically</li>
+            <li>Backup DB files completely as ZIP</li>
+            <li>Restore applies DB files without issues</li>
+            <li>Conflict resolution enforced</li>
+            <li>User notified at each step</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>📌 Future Improvements</h2>
+        <ul>
+            <li>Automatic background backups</li>
+            <li>Backup reminders</li>
+            <li>Backup history view</li>
+            <li>User-provided API key support</li>
+        </ul>
+    </div>
+
+</body>
+</html>
